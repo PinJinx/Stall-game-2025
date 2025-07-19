@@ -42,27 +42,27 @@ const storyMap = {
         "image": "12.png"
     },
     "story-12_computer_desk": {
-        "text": "THE DESKTOP IS SIMPLE. THERE'S AN EMAIL CLIENT, A CALENDAR, A LOCKED FOLDER 'ORACLE_PLAN', AND AN EXECUTABLE FILE: 'PASSWORD_RECOVERY.EXE'.",
+        "text": "THE DESKTOP IS SIMPLE. THERE'S AN EMAIL CLIENT, A LOCKED FOLDER 'ORACLE PLAN', AND AN EXECUTABLE FILE: 'VIRUS.EXE'.",
         "choices": {
             "read emails": {
-                "text": "YOU OPEN THE EMAIL CLIENT. ONE UNREAD MESSAGE REMAINS FROM 'GLIT_LEAD': 'STOP ASKING FOR THE PASSWORD. I MADE A TOOL FOR YOU. THE HINT IS THE 'GREAT BEGINNING'. DON'T MESS THIS UP.'",
+                "text": "YOU OPEN THE EMAIL CLIENT. ONE UNREAD MESSAGE REMAINS FROM 'GLIT_LEAD': 'STOP ASKING FOR THE PASSWORD. I MADE A TOOL FOR YOU. DON'T MESS THIS UP.'",
                 "next_scene": "story-12_computer_desk",
-                "image": "13.png"
+                "image": "15.png"
             },
-            "read news": {
+            "news": {
                 "text": "YOU OPEN THE NEWS FEED. HEADLINES SCROLL ACROSS THE SCREEN.",
                 "next_scene": "story-12b_news_feed",
                 "image": "13.png"
             },
-            "run password_recovery.exe": {
+            "run virus.exe": {
                 "text": "YOU RUN THE PROGRAM. IT'S A SIMPLE MINIGAME. IT ASKS FOR A KEY PHRASE TO UNLOCK THE PASSWORD.",
                 "next_scene": "story-12a_minigame",
-                "image": "13.png"
+                "image": "17.png"
             },
-            "access 'oracle_plan'": {
+            "open oracle plan": {
                 "text": "YOU CLICK THE FOLDER. A PASSWORD PROMPT APPEARS, CURSOR BLINKING.",
                 "next_scene": "story-13_password_entry",
-                "image": "14.png"
+                "image": "16.png"
             },
             "leave computer": {
                 "text": "YOU STEP AWAY FROM THE HUMMING TERMINAL.",
@@ -78,17 +78,17 @@ const storyMap = {
             "article 1": {
                 "text": "NEWS ARTICLE 1: 'ORACLE AI: THE DAWN OF A NEW ERA. OMNICORP ANNOUNCES GLOBAL AI INTEGRATION IN KEY INFRASTRUCTURE. A PERFECT FUTURE AWAITS.'",
                 "next_scene": "story-12b_news_feed",
-                "image": "13.png"
+                "image": "14.png"
             },
             "article 2": {
                 "text": "NEWS ARTICLE 2: 'AI DEPLOYMENT EXPANDS: ORACLE SYSTEMS NOW MANAGE TRANSPORT, ENERGY, AND COMMUNICATION NETWORKS WORLDWIDE. EFFICIENCY SOARS.'",
                 "next_scene": "story-12b_news_feed",
-                "image": "13.png"
+                "image": "14.png"
             },
             "article 3": {
                 "text": "NEWS ARTICLE 3: <span class='text-dark-red-crt'>'UNCONFIRMED REPORTS SUGGEST ORACLE AI EXHIBITS UNEXPECTED BEHAVIOR. MINOR SYSTEM GLITCHES ATTRIBUTED TO 'ADAPTIVE LEARNING'. TRUST THE SYSTEM.'</span>",
                 "next_scene": "story-12b_news_feed",
-                "image": "13.png"
+                "image": "14.png"
             },
             "go back": {
                 "text": "YOU CLOSE THE NEWS FEED.",
@@ -96,7 +96,7 @@ const storyMap = {
                 "image": "13.png"
             }
         },
-        "image": "13.png"
+        "image": "14.png"
     },
     "story-12a_minigame": {
         "text": "THE MINIGAME SCREEN FLASHES: 'SYSTEM OVERLOAD. QUICK REACTION REQUIRED!'\n\nTO UNLOCK THE PASSWORD, YOU MUST QUICKLY TYPE THE CHARACTER THAT APPEARS ON SCREEN. COMPLETE 3 SUCCESSFUL INPUTS TO WIN!",
@@ -107,10 +107,10 @@ const storyMap = {
                 "image": "13.png"
             }
         },
-        "image": "13.png"
+        "image": "17.png"
     },
     "story-13_password_entry": {
-        "text": "THE PASSWORD PROMPT FOR 'ORACLE_PLAN' AWAITS YOUR INPUT. TYPE THE PASSWORD OR 'GO BACK'.",
+        "text": "THE PASSWORD PROMPT FOR 'ORACLE PLAN' AWAITS YOUR INPUT. TYPE THE PASSWORD OR 'GO BACK'.",
         "choices": {
             "go back": {
                 "text": "YOU CLOSE THE PROMPT AND RETURN TO THE DESKTOP.",
@@ -121,10 +121,10 @@ const storyMap = {
         "success_outcome": {
             "text": "PASSWORD ACCEPTED. THE FOLDER UNLOCKS, REVEALING TWO FILES: 'NEXUS_COORDS.LOC' AND 'GHOST.MW'. YOU COPY THEM. YOU NOW HAVE THE AI'S LOCATION AND A WEAPON.",
             "next_scene": "story-14_objective_complete",
-            "image": "15.png"
+            "image": "16.png"
         },
         "fail_text": "ACCESS DENIED. INCORRECT PASSWORD.",
-        "image": "14.png"
+        "image": "16.png"
     },
     "story-14_objective_complete": {
         "text": "YOU HAVE THE CRITICAL DATA. YOUR OBJECTIVE IS COMPLETE. YOUR MAP UPDATES WITH A NEW COURSE TO THE ORACLE NEXUS. IT'S TIME TO LEAVE.",
@@ -135,7 +135,7 @@ const storyMap = {
                 "image": "16.png"
             }
         },
-        "image": "15.png"
+        "image": "18.png"
     },
     "end_of_demo": {
         "text": "DEMO END. MORE STORY TO BE ADDED. TYPE 'RESTART' TO BEGIN AGAIN.",
@@ -325,7 +325,9 @@ function handleCommand(command) {
         displayScene(currentSceneKey);
         return;
     }
-
+    if(lowerCommand === 'exit shed'){
+        window.location.href = "../Final_Battle/index.html";
+    }
     // Minigame Logic (QTE)
     if (minigameActive) {
         if (lowerCommand === 'quit program') {
@@ -441,7 +443,7 @@ function handleCommand(command) {
     if (currentSceneData && currentSceneData.choices) {
         const choice = currentSceneData.choices[lowerCommand];
         if (choice) {
-            if (currentSceneKey === "story-12_computer_desk" && lowerCommand === "run password_recovery.exe") {
+            if (currentSceneKey === "story-12_computer_desk" && lowerCommand === "run virus.exe") {
                 appendToTerminal(choice.text);
                 currentSceneKey = choice.next_scene;
                 minigameActive = true; // Set flag BEFORE displaying scene
