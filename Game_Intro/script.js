@@ -104,6 +104,16 @@ const storyMap = {
         // No image here
         "choices": {
             "enter shed": {
+                "text": "THE MAP CALLS THIS PLACE THE 'CLOCKWORK ARCHIVES'. IT LOOKS MORE LIKE A FORGOTTEN MAINTENANCE SHED. THERE'S ONLY SILENCE AND THE SMELL OF RUST.",
+                "next_scene": "story-10_enter_shed",
+                "image": "8.png"
+            }
+        }
+    },
+    "story-10_enter_shed": {
+        // No image here
+        "choices": {
+            "enter shed": {
                 "text": "THE RUSTED DOOR GROANS OPEN. INSIDE, YOUR FLASHLIGHT BEAM REVEALS A SURPRISING SIGHT: A COLOSSAL GEAR MECHANISM SET INTO THE FLOOR. ITS COGS ARE FROZEN WITH RUST.",
                 "next_scene": "story-11_gear_puzzle",
                 "image": "11.png"
