@@ -161,10 +161,6 @@ function displayScene(sceneKey, imageToLoad = null) {
         imgElement.src = `https://pinjinx.github.io/Stall-game-2025/Game_Intro/assets/${finalImageToLoad}`;
         imgElement.alt = `Scene: ${sceneKey}`;
         imgElement.classList.add('pixel-image');
-        imgElement.onerror = () => { // Fallback for missing images
-            imgElement.src = `https://placehold.co/600x200/000000/00ff00?text=IMAGE+MISSING`;
-            appendToTerminal(`WARNING: IMAGE 'assets/${finalImageToLoad}' NOT FOUND.`, 'text-yellow-crt');
-        };
         sceneImageContainer.appendChild(imgElement);
     } else {
         // If no image is specified for the current state, show a default placeholder

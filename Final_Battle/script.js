@@ -369,10 +369,6 @@ function loadSceneImage(sceneKey, imageToLoad = null) {
         imgElement.src = `https://pinjinx.github.io/Stall-game-2025/Final_Battle/assets/${finalImageToLoad}`;
         imgElement.alt = `Scene: ${sceneKey}`;
         imgElement.classList.add('pixel-image');
-        imgElement.onerror = () => {
-            imgElement.src = `https://placehold.co/600x200/000000/00ff00?text=IMAGE+MISSING`;
-            appendToTerminal(`WARNING: IMAGE 'assets/${finalImageToLoad}' NOT FOUND.`, 'text-yellow-crt');
-        };
         sceneImageContainer.appendChild(imgElement);
     }
 }
