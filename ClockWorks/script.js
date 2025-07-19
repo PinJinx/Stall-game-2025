@@ -194,7 +194,7 @@ function displayScene(sceneKey, imageToLoad = null) {
 
     if (finalImageToLoad) {
         const imgElement = document.createElement('img');
-        imgElement.src = `/Stall-game-2025/assets/${finalImageToLoad}`;
+        imgElement.src = `/Stall-game-2025/ClockWorks/assets/${finalImageToLoad}`;
         imgElement.alt = `Scene: ${sceneKey}`;
         imgElement.classList.add('pixel-image');
         imgElement.onerror = () => {
