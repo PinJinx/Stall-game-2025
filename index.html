@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>amFOSS Presents: ZERO-DAY</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - VT323 for pixel-art terminal feel -->
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles for the body */
+        body {
+            font-family: 'VT323', monospace; /* Pixel art font */
+            background-color: #0d1117; /* Very dark background */
+            color: #00ff00; /* Classic green text */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 1rem;
+            box-sizing: border-box;
+            overflow: hidden; /* Prevent scrollbars from CRT effects */
+        }
+
+        /* CRT Screen Effect Container */
+        .crt-screen {
+            position: relative;
+            background-color: #000000; /* Black background for the screen */
+            border-radius: 10px; /* Slight rounded corners for CRT */
+            box-shadow: 0 0 15px 5px rgba(0, 255, 0, 0.5), /* Green glow */
+                        inset 0 0 20px rgba(0, 255, 0, 0.2); /* Inner glow */
+            padding: 20px;
+            max-width: 900px;
+            width: 100%;
+            height: 600px; /* Fixed height for the start screen */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center content vertically */
+            align-items: center;
+            gap: 1.5rem; /* Space between elements */
+            transform: perspective(1000px) rotateX(2deg) rotateY(-2deg); /* Subtle 3D tilt */
+            transition: transform 0.3s ease-in-out; /* Smooth transition for hover */
+            overflow: hidden; /* Ensure content doesn't overflow rounded corners */
+        }
+
+        /* Scanline effect using pseudo-element */
+        .crt-screen::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.05), rgba(0, 255, 0, 0.05), rgba(0, 0, 255, 0.05));
+            background-size: 100% 2px, 3px 100%; /* Horizontal scanlines, subtle RGB mask */
+            pointer-events: none; /* Allow clicks through */
+            z-index: 1; /* Above content */
+        }
+
+        /* Subtle flicker animation */
+        .crt-screen::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.1);
+            animation: flicker 0.15s infinite alternate; /* Fast, subtle flicker */
+            pointer-events: none;
+            z-index: 2; /* Above scanlines */
+        }
+
+        @keyframes flicker {
+            0% { opacity: 0.1; }
+            100% { opacity: 0.15; }
+        }
+
+        /* Removed #start-background specific styling as it's no longer used */
+
+        /* Button styling */
+        .start-button {
+            background-color: #008800; /* Darker green */
+            color: #00ff00; /* Bright green text */
+            border: 2px solid #00ff00;
+            padding: 0.75rem 2rem;
+            font-family: 'VT323', monospace;
+            font-size: 1.5rem; /* Larger font for button */
+            text-shadow: 0 0 5px #00ff00;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s, box-shadow 0.2s;
+            position: relative; /* Ensure it's above other elements */
+            z-index: 3;
+        }
+
+        .start-button:hover {
+            background-color: #00aa00; /* Lighter green on hover */
+            box-shadow: 0 0 15px rgba(0, 255, 0, 1);
+        }
+
+        .start-button:active {
+            background-color: #006600; /* Darker green on click */
+            box-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+            transform: translateY(1px);
+        }
+
+        /* Adjust terminal output for a cleaner look without input */
+        #terminal-output {
+            height: auto; /* Allow height to adjust to content */
+            min-height: 50px; /* Minimum height */
+            background-color: transparent; /* Make it transparent */
+            border: none; /* Remove border */
+            text-align: center; /* Center the text */
+        }
+    </style>
+</head>
+<body>
+    <div class="crt-screen">
+        <!-- Removed Background grid div -->
+
+        <!-- Main text for start screen -->
+        <div class="text-center space-y-3 relative z-30">
+            <h1 class="text-5xl font-bold text-green-crt">::: amFOSS presents :::</h1>
+            <p class="text-4xl font-bold text-green-crt leading-loose">
+                ::: ZERO-DAY :::
+            </p>
+            <p class="text-2xl text-green-crt leading-loose">
+                SYSTEM OFFLINE. READY TO REBOOT?
+            </p>
+        </div>
+
+        <!-- Start Game Button -->
+        <button id="startGameButton" class="start-button">
+            START GAME
+        </button>
+
+        <!-- Terminal (now just for messages, input removed) -->
+        <div class="w-full max-w-md rounded-lg overflow-hidden relative z-30">
+            <div id="terminal-output" class="terminal p-4 text-green-crt">
+                <!-- Initial content will be added by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get references to elements
+        const terminalOutput = document.getElementById('terminal-output');
+        const startGameButton = document.getElementById('startGameButton');
+
+        function appendToTerminal(text, colorClass = 'text-green-crt') {
+            const lines = text.split('\n');
+            lines.forEach(line => {
+                const p = document.createElement('p');
+                p.innerHTML = line.trim();
+                p.classList.add(colorClass);
+                terminalOutput.appendChild(p);
+            });
+            terminalOutput.scrollTop = terminalOutput.scrollHeight;
+        }
+
+        // Function to handle starting the game (redirect)
+        function startGame() {
+            appendToTerminal("INITIATING SEQUENCE...", 'text-gray-crt');
+            // Redirect to the Game_intro page
+            window.location.href = '/Game_Intro/index.html';
+        }
+
+        // Event listener for the Start Game button
+        startGameButton.addEventListener('click', startGame);
+
+        // Initial display on page load
+        window.onload = () => {
+            appendToTerminal("PRESS 'START GAME' TO BEGIN.", 'text-yellow-crt');
+        };
+    </script>
+</body>
+</html>
