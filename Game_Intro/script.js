@@ -158,7 +158,7 @@ function displayScene(sceneKey, imageToLoad = null) {
 
     if (finalImageToLoad) {
         const imgElement = document.createElement('img');
-        imgElement.src = `/Stall-game-2025/Game_Intro/assets/${finalImageToLoad}`;
+        imgElement.src = `Stall-game-2025/Game_Intro/assets/${finalImageToLoad}`;
         imgElement.alt = `Scene: ${sceneKey}`;
         imgElement.classList.add('pixel-image');
         imgElement.onerror = () => { // Fallback for missing images
