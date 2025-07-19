@@ -1,0 +1,114 @@
+{
+    "story-1": {
+        "text": "YOU OPEN YOUR EYES.\nYOUR HEAD THROBS. EVERY MUSCLE ACHES.\nYOU ARE ON YOUR BACK, COVERED IN DUST AND LIGHTWEIGHT DEBRIS.",
+        "next_scene": "story-2"
+    },
+    "story-2": {
+        "choices": {
+            "get up": {
+                "text": "YOU GET TO YOUR FEET. YOU ARE ON A RUBBLE-STREWN STREET. TO THE EAST, AN ARMORED SECURITY VAN LIES ON ITS SIDE, ITS LIGHTS FLICKERING. TO THE WEST, THE STREET DISAPPEARS INTO A NARROW, SHADOWED ALLEYWAY.",
+                "next_scene": "story-3_options"
+            }
+        }
+    },
+    "story-3_options": {
+        "choices": {
+            "look around": {
+                "text": "THE AIR SMELLS OF OZONE AND CONCRETE.\nRUINED SKYSCRAPERS REACH FOR AN ORANGE SKY.\nTATTERED BILLBOARDS CLING TO THEIR SIDES.\nTHEY DISPLAY THE OMNICORP LOGO: AN EYE INSIDE A GEAR.\nA FADED SLOGAN READS: 'YOUR FUTURE, SECURED'.\nDEAD WIRES HANG FROM POLES, SPITTING SPARKS.",
+                "next_scene": "story-3_options"
+            },
+            "look at van": {
+                "text": "IT'S A HEAVY-DUTY OMNICORP SECURITY VAN. THE ARMOR IS DENTED AND SCORCHED. A SIDE DOOR IS FORCED OPEN, CREATING A NARROW GAP. ITS EMERGENCY LIGHTS PULSE WEAKLY.",
+                "next_scene": "story-4_options"
+            },
+            "enter van": {
+                "text": "YOU SLIDE THROUGH THE NARROW GAP. THE VAN'S INTERIOR IS DARK. EMERGENCY POWER IS FAILING. RED LIGHTS FLICKER ON A CONTROL PANEL. A LOW HUM COMES FROM THE BACK.",
+                "next_scene": "story-5_van_inside"
+            }
+        }
+    },
+    "story-4_options": {
+        "choices": {
+            "enter van": {
+                "text": "YOU SLIDE THROUGH THE NARROW GAP. THE VAN'S INTERIOR IS DARK. EMERGENCY POWER IS FAILING. RED LIGHTS FLICKER ON A CONTROL PANEL. A LOW HUM COMES FROM THE BACK.",
+                "next_scene": "story-5_van_inside"
+            },
+            "look around": {
+                "text": "THE AIR SMELLS OF OZONE AND CONCRETE.\nRUINED SKYSCRAPERS REACH FOR AN ORANGE SKY.\nTATTERED BILLBOARDS CLING TO THEIR SIDES.\nTHEY DISPLAY THE OMNICORP LOGO: AN EYE INSIDE A GEAR.\nA FADED SLOGAN READS: 'YOUR FUTURE, SECURED'.\nDEAD WIRES HANG FROM POLES, SPITTING SPARKS.",
+                "next_scene": "story-3_options"
+            }
+        }
+    },
+    "story-5_van_inside": {
+        "choices": {
+            "look at monitor": {
+                "text": "BOLTED TO THE FLOOR IS A REINFORCED SERVER RACK. ITS MONITOR GLOWS, THE ONLY STEADY LIGHT. ON THE SCREEN IS A CRYPTIC, FLICKERING DIGITAL MAP. IT SHOWS THREE LOCATIONS: A GEAR, A CIRCUIT BOARD, AND A LOCK. BELOW IT, A MESSAGE SCROLLS: \"THREE PARTS, ONE TRUTH. COLLABORATION UNLOCKS ALL.\"\n\nYOU HAVE THE MAP. YOUR JOURNEY BEGINS.",
+                "next_scene": "story-6_map_acquired"
+            }
+        }
+    },
+    "story-6_map_acquired": {
+        "choices": {
+            "follow map": {
+                "text": "THE MAP'S FIRST SYMBOL, THE GEAR, LEADS YOU TO A MASSIVE DATA CENTER. THIS IS THE CLOCKWORK ARCHIVES.",
+                "next_scene": "story-7_approach_archives"
+            }
+        }
+    },
+    "story-7_approach_archives": {
+        "choices": {
+            "approach archives": {
+                "text": "THE BUILDING'S AUTOMATED DEFENSES ARE ACTIVE BUT CORRUPTED. OMNICORP DRONES MOVE IN JERKY, UNPREDICTABLE PATTERNS. THE AIR HUMS WITH THE WHIR OF DORMANT SERVERS.",
+                "next_scene": "story-8_enter_archives"
+            }
+        }
+    },
+    "story-8_enter_archives": {
+        "choices": {
+            "enter archives": {
+                "text": "INSIDE, YOU FIND A COLOSSAL GEAR MECHANISM SET INTO THE FLOOR. ITS MAIN COGS ARE FROZEN. A HOLOGRAPHIC DISPLAY SHIMMERS ABOVE IT, FLASHING A RAPID SEQUENCE OF NUMBERS AND SYMBOLS.",
+                "next_scene": "story-9_gear_puzzle"
+            }
+        }
+    },
+    "story-9_gear_puzzle": {
+        "choices": {
+            "examine puzzle": {
+                "text": "YOU SEE SMALLER, INTERCONNECTED GEARS THAT LOOK LIKE THEY CAN BE ROTATED. A NEARBY CONSOLE DISPLAYS A FRAGMENTED LOG: \"CHRONOS'S CODE.\" THE LOG SPEAKS OF ALIGNING THE GEARS WITH THE \"PASSAGE OF DATA.\"",
+                "next_scene": "story-10_examine_console"
+            }
+        }
+    },
+    "story-10_examine_console": {
+        "choices": {
+            "examine console": {
+                "text": "'LOG 734: CHRONOS ALIGNMENT REQUIRES PRECISE TIMING. THE SEQUENCE IS KEYED TO PRIME NUMBER INTERVALS. MATCH THE GEAR VALUE TO THE HOLO-DISPLAY WHEN THE SEQUENCE TIMER HITS A PRIME. MISS THE WINDOW, AND THE OMNICORP SYSTEM RESETS.'",
+                "next_scene": "story-10_examine_console_repeat"
+            },
+            "attempt puzzle": {
+                "text": "YOU ATTEMPT TO SOLVE THE CHRONOS PUZZLE. (PUZZLE LOGIC NOT YET IMPLEMENTED)",
+                "next_scene": "story-11_puzzle_solved"
+            }
+        }
+    },
+    "story-10_examine_console_repeat": {
+        "choices": {
+            "examine console": {
+                "text": "YOU RE-EXAMINE THE CONSOLE. THE LOG REMAINS THE SAME.",
+                "next_scene": "story-10_examine_console_repeat"
+            },
+            "attempt puzzle": {
+                "text": "YOU ATTEMPT TO SOLVE THE CHRONOS PUZZLE. (PUZZLE LOGIC NOT YET IMPLEMENTED)",
+                "next_scene": "story-11_puzzle_solved"
+            }
+        }
+    },
+    "story-11_puzzle_solved": {
+        "text": "THE GEARS CLICK INTO PLACE. A HIDDEN COMPARTMENT OPENS, REVEALING THE FIRST GOLDEN SCROLL!",
+        "next_scene": "end_of_demo"
+    },
+    "end_of_demo": {
+        "text": "DEMO END. MORE STORY TO BE ADDED. TYPE 'RESTART' TO BEGIN AGAIN.",
+        "next_scene": "end_of_demo"
+    }
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRT Digital Plague Interface</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - VT323 for pixel-art terminal feel -->
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+</head>
+<body class="antialiased">
+    <div class="crt-screen">
+        <!-- Image container at the top -->
+        <div id="scene-image-container" class="w-full max-w-md rounded-lg shadow-md pixel-image-container aspect-video">
+            <!-- Image will be dynamically inserted here by JavaScript -->
+        </div>
+
+        <!-- Text below the image -->
+        <div class="text-center space-y-3">
+            <p class="text-4xl text-green-crt leading-loose">
+                OMNICORP CONSOLE v2.1
+            </p>
+        </div>
+
+        <!-- Terminal -->
+        <div class="w-full bg-black rounded-lg overflow-hidden border border-green-700">
+            <div id="terminal-output" class="terminal p-4 text-green-crt">
+                <!-- Initial content will be added by JavaScript -->
+            </div>
+            <div class="flex items-center px-4 py-2">
+                <span class="text-green-crt mr-2">></span>
+                <input type="text" id="terminal-input" class="terminal-input flex-grow p-1" autofocus placeholder="TYPE COMMAND HERE...">
+            </div>
+        </div>
+    </div>
+</body>
+    <script src="script.js"></script>
+</html>

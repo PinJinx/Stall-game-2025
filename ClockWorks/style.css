@@ -1,0 +1,131 @@
+/* Base styles for the body */
+body {
+    font-family: 'VT323', monospace; /* Pixel art font */
+    background-color: #0d1117; /* Very dark background */
+    color: #00ff00; /* Classic green text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 1rem;
+    box-sizing: border-box;
+    overflow: hidden; /* Prevent scrollbars from CRT effects */
+}
+
+/* CRT Screen Effect Container */
+.crt-screen {
+    position: relative;
+    background-color: #000000; /* Black background for the screen */
+    border-radius: 10px; /* Slight rounded corners for CRT */
+    box-shadow: 0 0 15px 5px rgba(0, 255, 0, 0.5), /* Green glow */
+                inset 0 0 20px rgba(0, 255, 0, 0.2); /* Inner glow */
+    padding: 20px;
+    max-width: 900px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem; /* Space between elements */
+    transform: perspective(1000px) rotateX(2deg) rotateY(-2deg); /* Subtle 3D tilt */
+    transition: transform 0.3s ease-in-out; /* Smooth transition for hover */
+}
+
+/* Scanline effect using pseudo-element */
+.crt-screen::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+                linear-gradient(90deg, rgba(255, 0, 0, 0.05), rgba(0, 255, 0, 0.05), rgba(0, 0, 255, 0.05));
+    background-size: 100% 2px, 3px 100%; /* Horizontal scanlines, subtle RGB mask */
+    pointer-events: none; /* Allow clicks through */
+    z-index: 1; /* Above content */
+}
+
+/* Subtle flicker animation */
+.crt-screen::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    animation: flicker 0.15s infinite alternate; /* Fast, subtle flicker */
+    pointer-events: none;
+    z-index: 2; /* Above scanlines */
+}
+
+@keyframes flicker {
+    0% { opacity: 0.1; }
+    100% { opacity: 0.15; }
+}
+
+/* Image container styling for pixel art feel */
+.pixel-image-container {
+    border: 2px solid #00ff00; /* Green border */
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.7); /* Green glow around image */
+    display: flex; /* To center the image if smaller */
+    justify-content: center;
+    align-items: center;
+    background-color: #000000; /* Black background for image area */
+    overflow: hidden; /* Ensure image doesn't break container */
+}
+
+/* Image styling for pixel art feel */
+.pixel-image {
+    image-rendering: crisp-edges; /* For pixel art images */
+    image-rendering: pixelated; /* For pixel art images */
+    width: 100%; /* Make image fill its container */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove extra space below image */
+}
+
+/* Terminal specific styles */
+.terminal {
+    background-color: #000000; /* Black for terminal background */
+    border: 1px solid #008800; /* Darker green border */
+    font-size: 1.25rem; /* Increased font size for readability (text-xl) */
+    height: 300px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #008800 #000000;
+    text-shadow: 0 0 5px #00ff00; /* Green text glow */
+    line-height: 1.6; /* Increased line spacing */
+}
+.terminal::-webkit-scrollbar {
+    width: 8px;
+}
+.terminal::-webkit-scrollbar-track {
+    background: #000000;
+}
+.terminal::-webkit-scrollbar-thumb {
+    background-color: #008800;
+    border-radius: 4px;
+    border: 2px solid #000000;
+}
+.terminal-input {
+    background-color: #000000;
+    border-top: 1px solid #008800;
+    color: #00ff00;
+    outline: none;
+    text-shadow: 0 0 5px #00ff00; /* Green text glow */
+    font-size: 1.25rem; /* Increased font size for readability (text-xl) */
+}
+
+/* Specific text colors for terminal output */
+.text-green-crt { color: #00ff00; text-shadow: 0 0 5px #00ff00; }
+.text-blue-crt { color: #00aaff; text-shadow: 0 0 5px #00aaff; } /* A brighter blue for commands */
+.text-red-crt { color: #ff0000; text-shadow: 0 0 5px #ff0000; } /* Red for errors */
+.text-yellow-crt { color: #ffff00; text-shadow: 0 0 5px #ffff00; } /* Yellow for warnings */
+.text-purple-crt { color: #aa00ff; text-shadow: 0 0 5px #aa00ff; } /* Purple for echo */
+.text-gray-crt { color: #888888; text-shadow: 0 0 5px #888888; } /* Gray for system messages */
+
+/* Prevent text selection from showing default blue highlight */
+::selection {
+    background: rgba(0, 255, 0, 0.3);
+    color: #000000;
+}
