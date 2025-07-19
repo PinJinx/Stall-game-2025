@@ -194,7 +194,7 @@ function displayScene(sceneKey, imageToLoad = null) {
 
     if (finalImageToLoad) {
         const imgElement = document.createElement('img');
-        imgElement.src = `assets/${finalImageToLoad}`;
+        imgElement.src = `/Stall-game-2025/assets/${finalImageToLoad}`;
         imgElement.alt = `Scene: ${sceneKey}`;
         imgElement.classList.add('pixel-image');
         imgElement.onerror = () => {
@@ -326,7 +326,7 @@ function handleCommand(command) {
         return;
     }
     if(lowerCommand === 'exit shed'){
-        window.location.href = "../Final_Battle/index.html";
+        window.location.href = "/Stall-game-2025/Final_Battle/index.html";
     }
     // Minigame Logic (QTE)
     if (minigameActive) {

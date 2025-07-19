@@ -168,7 +168,7 @@ function displayScene(sceneKey, imageToLoad = null) {
 
     if (finalImageToLoad) {
         const imgElement = document.createElement('img');
-        imgElement.src = `assets/${finalImageToLoad}`;
+        imgElement.src = `/Stall-game-2025/assets/${finalImageToLoad}`;
         imgElement.alt = `Scene: ${sceneKey}`;
         imgElement.classList.add('pixel-image');
         imgElement.onerror = () => { // Fallback for missing images
@@ -227,7 +227,7 @@ function handleCommand(command) {
         return; // Do not process further for clear
     }
     if (lowerCommand === "enter shed") {
-        window.location.href = "../ClockWorks/index.html"
+        window.location.href = "/Stall-game-2025/ClockWorks/index.html"
         return;
     }
 
