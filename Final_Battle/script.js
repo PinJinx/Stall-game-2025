@@ -366,7 +366,7 @@ function loadSceneImage(sceneKey, imageToLoad = null) {
 
     if (finalImageToLoad) {
         const imgElement = document.createElement('img');
-        imgElement.src = `/Stall-game-2025/Final_Battle/assets/${finalImageToLoad}`;
+        imgElement.src = `https://pinjinx.github.io/Stall-game-2025/Final_Battle/assets/${finalImageToLoad}`;
         imgElement.alt = `Scene: ${sceneKey}`;
         imgElement.classList.add('pixel-image');
         imgElement.onerror = () => {
