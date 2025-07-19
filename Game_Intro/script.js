@@ -152,22 +152,11 @@ function displayScene(sceneKey, imageToLoad = null) {
 
     // --- Image Loading Logic ---
     sceneImageContainer.innerHTML = ''; // Clear previous image
-
-    // Use the provided imageToLoad argument, or the sceneData.image if it's a linear scene
-    const finalImageToLoad = imageToLoad || (sceneData.text && sceneData.image ? sceneData.image : null);
-
-    if (finalImageToLoad) {
-        const imgElement = document.createElement('img');
+            const imgElement = document.createElement('img');
         imgElement.src = `https://pinjinx.github.io/Stall-game-2025/Game_Intro/assets/${finalImageToLoad}`;
         imgElement.alt = `Scene: ${sceneKey}`;
         imgElement.classList.add('pixel-image');
         sceneImageContainer.appendChild(imgElement);
-    } else {
-        // If no image is specified for the current state, show a default placeholder
-        sceneImageContainer.innerHTML = `<img src="https://placehold.co/600x200/000000/00ff00?text=NO+IMAGE" alt="No image available" class="pixel-image">`;
-    }
-    // --- End Image Loading Logic ---
-
 
     if (sceneData.text) {
         appendToTerminal(sceneData.text);
