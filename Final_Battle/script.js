@@ -4,7 +4,7 @@ const terminalInput = document.getElementById('terminal-input');
 const sceneImageContainer = document.getElementById('scene-image-container');
 
 // Gemini AI Configuration
-const GEMINI_API_KEY = 'AIzaSyB1D0JPRArFpjpbPzvp_mLftf99QXegZ08'; // Replace with your actual API key
+const GEMINI_API_KEY = 'AIzaSyAInMrfcUuPXfbZqLpQxF8sH7jZFZOjuJw'; // Replace with your actual API key
 const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
 
 const storyMap = {
